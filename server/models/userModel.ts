@@ -23,6 +23,10 @@ const userSchema = new mongoose.Schema({
         type: String,
         default: 'https://res.cloudinary.com/devatchannel/image/upload/v1602752405/avatar/avatar_cugq40.png'
     },
+    role: {
+        type: String,
+        default: 'user' // admin
+    },
     type: {
         type: String,
         default: 'normal' // fast
