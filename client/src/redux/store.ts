@@ -4,10 +4,17 @@ import thunk from 'redux-thunk'
 import rootReducer from './reducers/index'
 
 import { composeWithDevTools } from 'redux-devtools-extension'
+import { configureStore } from "@reduxjs/toolkit"
 
-const store = createStore(
-    rootReducer,
-    composeWithDevTools(applyMiddleware(thunk))
-)
+// const store = createStore(
+//     rootReducer,
+//     composeWithDevTools(applyMiddleware(thunk))
+// )
+
+export const store = configureStore({
+    reducer: {},
+})
 
 export default store;
+
+export type AppDispatch = typeof store.dispatch

@@ -21,7 +21,7 @@ const LoginPass = () => {
 
   const handleSubmit = (e: FormSubmit) => {
     e.preventDefault()
-    dispatch(login(userLogin))
+    dispatch(login({userLogin}))
   }
 
   return (
