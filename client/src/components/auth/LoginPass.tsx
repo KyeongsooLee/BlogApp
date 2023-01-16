@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { useDispatch } from 'react-redux'
+import { useAppDispatch } from '../../redux/hooks'
 
 import { InputChange, FormSubmit } from '../../utils/TypeScript'
 import { login } from '../../redux/actions/authAction'
@@ -12,7 +12,7 @@ const LoginPass = () => {
 
   const [typePass, setTypePass] = useState(false)
 
-  const dispatch = useDispatch()
+  const dispatch = useAppDispatch()
 
   const handleChangeInput = (e: InputChange) => {
     const {value, name} = e.target
@@ -21,7 +21,7 @@ const LoginPass = () => {
 
   const handleSubmit = (e: FormSubmit) => {
     e.preventDefault()
-    dispatch(login({userLogin}))
+    dispatch(login(userLogin))
   }
 
   return (

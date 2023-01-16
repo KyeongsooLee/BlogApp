@@ -1,20 +1,16 @@
-import { createStore, applyMiddleware } from 'redux'
-import thunk from 'redux-thunk'
+import { configureStore } from '@reduxjs/toolkit';
 
 import rootReducer from './reducers/index'
 
-import { composeWithDevTools } from 'redux-devtools-extension'
-import { configureStore } from "@reduxjs/toolkit"
-
+const store = configureStore({
+  reducer: rootReducer,
+})
 // const store = createStore(
-//     rootReducer,
-//     composeWithDevTools(applyMiddleware(thunk))
+//   rootReducer,
+//   composeWithDevTools(applyMiddleware(thunk))
 // )
 
-export const store = configureStore({
-    reducer: {},
-})
+export type RootState = ReturnType<typeof store.getState>
+export type AppDispatch = typeof store.dispatch
 
 export default store;
-
-export type AppDispatch = typeof store.dispatch

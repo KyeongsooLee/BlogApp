@@ -1,5 +1,4 @@
 import { AUTH, IAuth, IAuthType } from '../types/authType'
-import { createSlice } from '@reduxjs/toolkit'
 
 const authReducer = (state: IAuth = {}, action: IAuthType): IAuth => {
   switch (action.type){
