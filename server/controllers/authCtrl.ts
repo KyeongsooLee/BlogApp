@@ -43,12 +43,16 @@ const authCtrl = {
     activeAccount: async(req: Request, res: Response) => {
         try {
             const { active_token } = req.body
-            
+
             const decoded = <IDecodedToken>jwt.verify(active_token, `${process.env.ACTIVE_TOKEN_SECRET}`)
 
             const newUser = decoded // const { newUser } = decoded 왜 안될까.................................
 
             if(!newUser) return res.status(400).json({msg: "Invalid authentication."})
+
+            console.log(newUser)
+            const user = await Users.findOne({account: newUser.account})
+            if(user) return res.status(400).json({msg: "This user already exists."})
 
             const user = new Users(newUser)
 
@@ -57,15 +61,6 @@ const authCtrl = {
             res.json({msg: "Account has been activated!"})
 
         } catch (err: any) {
-            let errMsg;
-
-            if(err.code === 11000){
-                errMsg = Object.keys(err.keyValue)[0] + " already exists." 
-            } else {
-                let name = Object.keys(err.errors)
-                errMsg = err.errors[`${name}`].message
-            }
-
             return res.status(500).json({msg: err.message})
         }
     },
