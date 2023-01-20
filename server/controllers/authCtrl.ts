@@ -46,17 +46,16 @@ const authCtrl = {
 
             const decoded = <IDecodedToken>jwt.verify(active_token, `${process.env.ACTIVE_TOKEN_SECRET}`)
 
-            const newUser = decoded // const { newUser } = decoded 왜 안될까.................................
+            const { newUser } = decoded // const { newUser } = decoded 왜 안될까..??..왜 다시 될까...............
 
             if(!newUser) return res.status(400).json({msg: "Invalid authentication."})
 
-            console.log(newUser)
             const user = await Users.findOne({account: newUser.account})
             if(user) return res.status(400).json({msg: "This user already exists."})
 
-            const user = new Users(newUser)
+            const new_user = new Users(newUser)
 
-            await user.save()
+            await new_user.save()
 
             res.json({msg: "Account has been activated!"})
 
