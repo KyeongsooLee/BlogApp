@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom' // Routes instead of Switch
 import { useDispatch } from 'react-redux'
 
@@ -13,7 +13,7 @@ import { refreshToken } from './redux/actions/authAction'
 const App = () => {
   const dispatch = useDispatch()
 
-  useEffect(() => {
+  useEffect(() => { // 수정해야함
     dispatch(refreshToken())
   },[dispatch])
 
