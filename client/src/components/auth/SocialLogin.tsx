@@ -1,11 +1,11 @@
 import React from 'react'
-import { useDispatch } from 'react-redux'
+import { useAppDispatch } from '../../redux/hooks'
 import { GoogleLogin, GoogleLoginResponse } from 'react-google-login-lite';
 
 import { googleLogin } from '../../redux/actions/authAction'
 
 const SocialLogin = () => {
-  const dispatch = useDispatch()
+  const dispatch = useAppDispatch()
 
   const onSuccess = (googleUser: GoogleLoginResponse) => {
     const id_token = googleUser.getAuthResponse().id_token
