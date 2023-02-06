@@ -1,4 +1,4 @@
-import { Document, StringSchemaDefinition } from 'mongoose'
+import { Document } from 'mongoose'
 
 export interface IUser extends Document{
     name: String
@@ -23,3 +23,18 @@ export interface IDecodedToken {
     iat: number
     exp: number
 }
+
+export interface IGgPayload {
+    email: string
+    email_verified: boolean
+    name: string
+    picture: string
+  }
+  
+  export interface IUserParams {
+    name: string 
+    account: string 
+    password: string
+    avatar?: string
+    type: string
+  }
